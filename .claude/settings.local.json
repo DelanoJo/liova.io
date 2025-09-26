@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/delanojohnson/Downloads/**)",
+      "Bash(bundle install:*)",
+      "Bash(bundle config set:*)",
+      "Bash(gem install:*)",
+      "Bash(jekyll --version)",
+      "Bash(chmod:*)",
+      "Bash(python3:*)",
+      "Bash(curl:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
