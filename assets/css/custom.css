@@ -168,25 +168,22 @@ body {
   box-shadow: var(--shadow-sm);
   transition: transform 0.2s, box-shadow 0.2s;
   position: relative;
-  padding-top: 4.5rem;
+  padding-top: 5.5rem;
   margin-top: 2rem;
 }
 
 .expertise-item::before {
   content: '';
   position: absolute;
-  top: 1rem;
+  top: 0.5rem;
   left: 50%;
   transform: translateX(-50%);
-  width: 60px;
-  height: 60px;
-  background-color: white;
+  width: 90px;
+  height: 90px;
   background-image: url('/assets/icons/Liova Iconography-01.png');
-  background-size: 50px;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  border-radius: 50%;
-  box-shadow: var(--shadow-md);
 }
 
 .expertise-item:nth-child(2)::before {
