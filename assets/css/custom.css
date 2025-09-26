@@ -36,7 +36,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 1.5rem 2rem;
 }
 
 .logo-link {
@@ -45,7 +45,7 @@ body {
 }
 
 .site-logo {
-  height: 50px;
+  height: 65px;
   width: auto;
 }
 
@@ -70,7 +70,7 @@ body {
 
 .hero-section {
   text-align: center;
-  padding: 4rem 0;
+  padding: 2.5rem 0;
   margin-bottom: 3rem;
   background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
   color: white;
@@ -168,30 +168,37 @@ body {
   box-shadow: var(--shadow-sm);
   transition: transform 0.2s, box-shadow 0.2s;
   position: relative;
-  padding-top: 3rem;
+  padding-top: 4.5rem;
+  margin-top: 2rem;
 }
 
 .expertise-item::before {
   content: '';
   position: absolute;
-  top: -20px;
+  top: 1rem;
   left: 50%;
   transform: translateX(-50%);
   width: 60px;
   height: 60px;
-  background: white;
-  border-radius: 50%;
-  box-shadow: var(--shadow-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.expertise-item.with-icon::before {
+  background-color: white;
   background-image: url('/assets/icons/Liova Iconography-01.png');
-  background-size: 40px;
+  background-size: 50px;
   background-repeat: no-repeat;
   background-position: center;
+  border-radius: 50%;
+  box-shadow: var(--shadow-md);
+}
+
+.expertise-item:nth-child(2)::before {
+  background-image: url('/assets/icons/Liova Iconography-02.png');
+}
+
+.expertise-item:nth-child(3)::before {
+  background-image: url('/assets/icons/Liova Iconography-03.png');
+}
+
+.expertise-item:nth-child(4)::before {
+  background-image: url('/assets/icons/Liova Iconography-04.png');
 }
 
 .expertise-item:hover {

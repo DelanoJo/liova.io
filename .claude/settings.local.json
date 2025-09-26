@@ -14,7 +14,9 @@
       "Bash(cat:*)",
       "Bash(kill:*)",
       "Read(//Users/delanojohnson/Library/CloudStorage/OneDrive-Personal/Documents/Liova/Liova Brandguidelines/Liova Brandguidelines/**)",
-      "Read(//Users/delanojohnson/Library/CloudStorage/OneDrive-Personal/Documents/Liova/Liova Brandguidelines/**)"
+      "Read(//Users/delanojohnson/Library/CloudStorage/OneDrive-Personal/Documents/Liova/Liova Brandguidelines/**)",
+      "Bash(git push:*)",
+      "Bash(git config:*)"
     ],
     "deny": [],
     "ask": []
