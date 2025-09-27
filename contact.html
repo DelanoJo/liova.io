@@ -43,8 +43,7 @@ title: Contact - Delano Johnson
       </div>
 
       <!-- Google reCAPTCHA v2 -->
-      <div id="recaptcha-container"></div>
-      <input type="hidden" id="recaptcha-response" name="g-recaptcha-response">
+      <div class="g-recaptcha" data-sitekey="6Lf05tYrAAAAAG5ca_RzpEExSJAOV3z8alzrK2vB"></div>
 
       <button type="submit" class="submit-button">Send Message</button>
 
@@ -72,26 +71,7 @@ title: Contact - Delano Johnson
 </section>
 
 <!-- Google reCAPTCHA script -->
-<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
-<script>
-  var onloadCallback = function() {
-    grecaptcha.render('recaptcha-container', {
-      'sitekey' : '6Lf05tYrAAAAAG5ca_RzpEExSJAOV3z8alzrK2vB',
-      'callback' : verifyCallback,
-      'error-callback': errorCallback
-    });
-  };
-
-  var verifyCallback = function(response) {
-    console.log('reCAPTCHA verified');
-    document.getElementById('recaptcha-response').value = response;
-  };
-
-  var errorCallback = function() {
-    console.log('reCAPTCHA error - please check your configuration');
-    alert('reCAPTCHA configuration error. Please ensure:\n1. Domain is added to reCAPTCHA settings\n2. Using reCAPTCHA v2 (not v3)\n3. Site key is correct');
-  };
-</script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 <style>
 .contact-section {
@@ -146,7 +126,7 @@ title: Contact - Delano Johnson
   border-color: var(--secondary-color);
 }
 
-#recaptcha-container {
+.g-recaptcha {
   margin-bottom: 1.5rem;
 }
 
