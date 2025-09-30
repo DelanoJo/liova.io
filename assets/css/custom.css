@@ -5,29 +5,49 @@
   --accent-purple: #7712B3;
   --accent-purple-light: #A50DFF;
   --accent-gold: #FFD700;
-  --text-dark: #2c3e50;
-  --text-light: #7f8c8d;
+  --text-dark: #1a1a1a;
+  --text-light: #666666;
   --bg-light: #f8f9fa;
   --border-color: #e1e8ed;
   --success-color: #27ae60;
-  --shadow-sm: 0 2px 4px rgba(0,0,0,0.08);
-  --shadow-md: 0 4px 8px rgba(0,0,0,0.12);
-  --shadow-lg: 0 8px 16px rgba(0,0,0,0.16);
+  --gradient-primary: linear-gradient(135deg, #1259B2 0%, #0D78FF 100%);
+  --gradient-secondary: linear-gradient(135deg, #8DD1EC 0%, #1259B2 100%);
+  --shadow-sm: 0 2px 8px rgba(18, 89, 178, 0.08);
+  --shadow-md: 0 4px 16px rgba(18, 89, 178, 0.12);
+  --shadow-lg: 0 8px 32px rgba(18, 89, 178, 0.16);
+  --shadow-xl: 0 16px 48px rgba(18, 89, 178, 0.20);
 }
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   color: var(--text-dark);
   line-height: 1.6;
+  font-weight: 400;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+strong {
+  font-weight: 700;
 }
 
 .site-header {
   background: white;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 2px 20px rgba(18, 89, 178, 0.1);
   position: sticky;
   top: 0;
   z-index: 100;
-  border-bottom: 2px solid var(--secondary-color);
+  border-bottom: 3px solid transparent;
+  background: linear-gradient(white, white) padding-box,
+              var(--gradient-primary) border-box;
+  transition: all 0.3s ease;
+}
+
+.site-header:hover {
+  box-shadow: 0 4px 30px rgba(18, 89, 178, 0.15);
 }
 
 .site-nav {
@@ -57,45 +77,110 @@ body {
 .nav-links a {
   color: var(--primary-color);
   text-decoration: none;
-  font-weight: 500;
-  transition: color 0.2s;
-  padding: 0.5rem 0;
-  border-bottom: 2px solid transparent;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  padding: 0.5rem 1rem;
+  border-bottom: 3px solid transparent;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.9rem;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 3px;
+  bottom: -3px;
+  left: 50%;
+  background: var(--gradient-primary);
+  transition: all 0.3s ease;
 }
 
 .nav-links a:hover {
   color: var(--accent-color);
-  border-bottom-color: var(--secondary-color);
+  transform: translateY(-2px);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+  left: 0;
 }
 
 .hero-section {
   text-align: center;
-  padding: 1.875rem 0;
+  padding: 3rem 0;
   margin-bottom: 3rem;
-  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  background: var(--gradient-primary);
   color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  animation: pulse 15s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.1); opacity: 0.8; }
 }
 
 .profile-photo {
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  border: 4px solid white;
-  margin-bottom: 0.5rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  border: 5px solid white;
+  margin-bottom: 1rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
   object-fit: cover;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.profile-photo:hover {
+  transform: scale(1.05);
 }
 
 .hero-section h1 {
-  font-size: 3rem;
+  font-size: 3.5rem;
   margin-bottom: 0.5rem;
-  font-weight: 700;
+  font-weight: 800;
+  position: relative;
+  z-index: 1;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  animation: fadeInUp 0.6s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .tagline {
-  font-size: 1.25rem;
-  opacity: 0.95;
+  font-size: 1.4rem;
+  opacity: 1;
   margin-bottom: 1.5rem;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  position: relative;
+  z-index: 1;
+  animation: fadeInUp 0.8s ease;
 }
 
 .contact-info {
@@ -130,9 +215,24 @@ body {
 
 .highlight-item strong {
   display: block;
-  font-size: 2.5rem;
-  color: var(--secondary-color);
+  font-size: 3rem;
+  font-weight: 800;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin-bottom: 0.25rem;
+  animation: countUp 1s ease;
+}
+
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .highlight-item span {
@@ -164,12 +264,15 @@ body {
 .expertise-item {
   background: white;
   padding: 2rem;
-  border-radius: 8px;
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.2s, box-shadow 0.2s;
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   padding-top: 5.5rem;
   margin-top: 2rem;
+  border: 2px solid transparent;
+  background: linear-gradient(white, white) padding-box,
+              linear-gradient(135deg, transparent, var(--secondary-color)) border-box;
 }
 
 .expertise-item::before {
@@ -199,14 +302,17 @@ body {
 }
 
 .expertise-item:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--shadow-xl);
+  background: linear-gradient(white, white) padding-box,
+              var(--gradient-primary) border-box;
 }
 
 .expertise-item h3 {
   color: var(--primary-color);
   margin-bottom: 1rem;
-  font-size: 1.25rem;
+  font-size: 1.4rem;
+  font-weight: 700;
 }
 
 .recent-work {
@@ -224,10 +330,21 @@ body {
 
 .project {
   background: white;
-  border-left: 4px solid var(--secondary-color);
+  border-left: 5px solid transparent;
   padding: 2rem;
   margin-bottom: 2rem;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-md);
+  border-radius: 8px;
+  background: linear-gradient(white, white) padding-box,
+              var(--gradient-secondary) border-box;
+  transition: all 0.3s ease;
+}
+
+.project:hover {
+  transform: translateX(8px);
+  box-shadow: var(--shadow-lg);
+  background: linear-gradient(white, white) padding-box,
+              var(--gradient-primary) border-box;
 }
 
 .project h3 {
@@ -304,15 +421,34 @@ body {
 .industry-item {
   background: white;
   padding: 2rem;
-  border-radius: 8px;
-  border-top: 3px solid var(--secondary-color);
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.2s, box-shadow 0.2s;
+  border-radius: 12px;
+  border-top: 4px solid transparent;
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(white, white) padding-box,
+              var(--gradient-secondary) border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+.industry-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 4px;
+  background: var(--gradient-primary);
+  transition: left 0.3s ease;
 }
 
 .industry-item:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--shadow-xl);
+}
+
+.industry-item:hover::before {
+  left: 0;
 }
 
 .industry-item h3 {
@@ -345,14 +481,17 @@ body {
 .methodology-item {
   background: white;
   padding: 2rem;
-  border-radius: 8px;
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.2s, box-shadow 0.2s;
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  border: 2px solid transparent;
 }
 
 .methodology-item:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--shadow-xl);
+  border: 2px solid var(--secondary-color);
 }
 
 .methodology-item h3 {
@@ -376,18 +515,42 @@ body {
 
 .cta-button {
   display: inline-block;
-  padding: 1rem 2rem;
+  padding: 1.2rem 3rem;
   background: white;
   color: var(--primary-color);
   text-decoration: none;
-  border-radius: 4px;
+  border-radius: 50px;
   margin-top: 1rem;
-  font-weight: 600;
-  transition: transform 0.2s;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255,255,255,0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(18, 89, 178, 0.1);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
 }
 
 .cta-button:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255,255,255,0.4);
+}
+
+.cta-button:hover::before {
+  width: 300px;
+  height: 300px;
 }
 
 footer {
@@ -562,11 +725,19 @@ footer {
 
 .tech-tag {
   display: inline-block;
-  padding: 0.5rem 1rem;
-  background: var(--primary-color);
+  padding: 0.6rem 1.2rem;
+  background: var(--gradient-primary);
   color: white;
-  border-radius: 20px;
+  border-radius: 25px;
   font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.tech-tag:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: var(--shadow-md);
 }
 
 .cert-stats {
@@ -609,18 +780,37 @@ footer {
 .cert-item {
   background: white;
   padding: 1.5rem;
-  border-left: 4px solid var(--border-color);
-  box-shadow: var(--shadow-sm);
-  transition: all 0.2s;
+  border-left: 5px solid var(--border-color);
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cert-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 0;
+  background: var(--gradient-primary);
+  transition: height 0.3s ease;
 }
 
 .cert-item.recent {
   border-left-color: var(--success-color);
+  background: linear-gradient(135deg, rgba(39, 174, 96, 0.05) 0%, transparent 100%);
 }
 
 .cert-item:hover {
-  transform: translateX(4px);
-  box-shadow: var(--shadow-md);
+  transform: translateX(8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.cert-item:hover::before {
+  height: 100%;
 }
 
 .cert-item h3 {
